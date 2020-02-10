@@ -25,12 +25,24 @@ class Ocean{
     }
 
     public void display(){
+        System.out.println("  A B C D E F G H I J");
+        System.out.println("  ___________________");
+        System.out.println(" ");
+        int i = 0;
        for (List<Square> list : ocean) {
-           for (Square square : list) {
-               System.out.println(square);
-           }
-       }
+           
+            System.out.print(i + " ");
+                for (Square square : list) {
+                    System.out.print(square.getSquare() + " ");
+                
+           } System.out.println(" ");
+           i = i +1;
+        
+        
+        }
 
+        System.out.println("  ___________________");
+    
     }
 
 

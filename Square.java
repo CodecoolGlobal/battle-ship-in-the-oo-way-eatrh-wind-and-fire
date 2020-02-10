@@ -5,7 +5,7 @@ class Square{
 
 
     public Square(){
-        square = "|_|";
+        square = "-";
     }
 
     public String getSquare(){

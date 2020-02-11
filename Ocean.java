@@ -29,7 +29,7 @@ class Ocean{
         System.out.println("  ___________________");
         System.out.println(" ");
         int i = 0;
-       for (List<Square> list : ocean) {
+        for (List<Square> list : ocean) {
            
             System.out.print(i + " ");
                 for (Square square : list) {

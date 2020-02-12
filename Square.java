@@ -8,13 +8,18 @@ class Square{
         this.isHit = false;
     }
 
-    public String getSquare(){
+    public String getSquare(){       //display
         return symbol;
     }
-
-    public void display(){
-        {
-        // toString    
-        }
+    public void shoot(){
+        this.isHit = true;          // setter
     }
+    public boolean checkHit(){
+        return this.isHit;
+    }
+
+    
+
+}
+
 }

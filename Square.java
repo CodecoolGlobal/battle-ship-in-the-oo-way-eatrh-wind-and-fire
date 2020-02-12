@@ -18,8 +18,6 @@ class Square{
         return this.isHit;
     }
 
-    
 
-}
 
 }

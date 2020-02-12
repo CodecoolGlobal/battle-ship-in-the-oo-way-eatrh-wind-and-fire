@@ -4,7 +4,7 @@ import java.util.List;
 class Ocean{
     private int width;
     private int height;
-    public List<List<Square>> ocean;
+    public List<ArrayList<Square>> ocean;
 
 
     public Ocean(){

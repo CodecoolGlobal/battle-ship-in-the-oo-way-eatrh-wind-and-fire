@@ -4,7 +4,10 @@ import java.util.ArrayList;
 class Main{
     public static void main(String[] args){
        Ocean ocean = new Ocean();
-        ocean.display();
+    //    ocean.get(1).get(0);
+    //    ocean.set(1, "something");
+
+       ocean.display();
 
     }
 }

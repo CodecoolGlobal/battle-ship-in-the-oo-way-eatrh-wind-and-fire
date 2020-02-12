@@ -1,15 +1,15 @@
 class Square{
 
-    private String square;
-
-
+    private String symbol;
+    private boolean isHit;
 
     public Square(){
-        square = "-";
+        this.symbol = "-";
+        this.isHit = false;
     }
 
     public String getSquare(){
-        return square;
+        return symbol;
     }
 
     public void display(){

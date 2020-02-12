@@ -30,21 +30,12 @@ class Ocean{
         System.out.println(" ");
         int i = 0;
        for (List<Square> list : ocean) {
-           
             System.out.print(i + " ");
-                for (Square square : list) {
-                    System.out.print(square.getSquare() + " ");
-                
+                for (Square symbol : list) {
+                    System.out.print(symbol.getSquare() + " ");
            } System.out.println(" ");
            i = i +1;
-        
-        
         }
-
         System.out.println("  ___________________");
-    
     }
-
-
-
 }

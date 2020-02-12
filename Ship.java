@@ -1,16 +1,21 @@
-class Ship{
+import java.util.ArrayList;
+import java.util.List;
 
-    private int lenght;
-    private int xCoordinate;
-    private int yCoordinate;
-    private String direction;
+class Ship {
+    private List<Coordinates> coordinates;
 
-    public Ship(int lenght, int xCoordinate, int yCoordinate, String direction){
-
-        this.lenght = lenght;
-        this.xCoordinate = xCoordinate;
-        this.yCoordinate = yCoordinate;
-        this.direction = direction;
+    public Ship(int startY, int startX, int endY, int endX) {
+        this.coordinates = calculateCoordinates(startY, startX, endY, endX);
     }
+
+    private List<Coordinates> calculateCoordinates(int startY, int startX, int endY, int endX) {
+
+
+        //
+
+        return new ArrayList<>();
+    }
+
+
 
 }

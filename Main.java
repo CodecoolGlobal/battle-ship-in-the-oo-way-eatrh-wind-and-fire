@@ -1,13 +1,25 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+class Main {
+    public static void main(String[] args) {
 
-class Main{
-    public static void main(String[] args){
-       Ocean ocean = new Ocean();
-    //    ocean.get(1).get(0);
-    //    ocean.set(1, "something");
+        Ocean user1Ocean = new Ocean();
+        user1Ocean.addShip(new Ship(1, 1, 1, 5));
+        user1Ocean.addShip(new Ship(1, 1, 1, 5));
+        user1Ocean.addShip(new Ship(1, 1, 1, 5));
+        user1Ocean.addShip(new Ship(1, 1, 1, 5));
+        user1Ocean.addShip(new Ship(1, 1, 1, 5));
 
-       ocean.display();
+        User user1 = new User(user1Ocean);
+        Ocean player2Ocean = new Ocean();
+        player2Ocean.addShip(new Ship());
+        player2Ocean.addShip(new Ship());
+        player2Ocean.addShip(new Ship());
+        player2Ocean.addShip(new Ship());
+        player2Ocean.addShip(new Ship());
+
+        User user2 = new User(player2Ocean);
+
+
+
 
     }
 }

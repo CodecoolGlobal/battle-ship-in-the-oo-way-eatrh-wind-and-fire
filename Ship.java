@@ -45,5 +45,13 @@ class Ship {
             System.out.println(points);
         }
     }
-
+    public void hit(int x, int y) {
+        // Iterate over ships and find if ship hitted
+        for(ArrayList<Integer> hits : ship){
+            if (hits.contains(x) && hits.contains(y)){
+                System.out.println("Im hit mutherfucker");
+            }
+        }
+        
+    }
 }

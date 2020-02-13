@@ -6,6 +6,7 @@ class Main {
         // user1Ocean.display();
         Ship ship = new Ship("Maniek", true, 3, 2, 2);
         ship.display();
+        ship.hit(3, 2);
         
         // user1Ocean.addShip(new Ship(1, 1, 1, 5));
         // user1Ocean.addShip(new Ship(1, 1, 1, 5));

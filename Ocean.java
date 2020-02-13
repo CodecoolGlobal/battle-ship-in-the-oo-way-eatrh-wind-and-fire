@@ -45,27 +45,30 @@ class Ocean {
         ships.add(ship);
     }
 
-    public boolean hit(int x, int y) {
-        // Iterate over ships and find if ship hitted
-        boolean hit = true;
+    // public boolean hit(int x, int y) {
+    //     // Iterate over ships and find if ship hitted
+    //     for (Ship ship : ships){
+    //         boolean hit = ships.contains(x);
+    //     }
+    //     boolean hit = true;
 
-        if (hit) {
-            markSquareAsHitted();
-        }
+    //     if (hit) {
+    //         markSquareAsHitted();
+    //     }
 
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    public void markSquareAsHitted(int x, int y) {
-        for () {
-            for () {
-                Square square;
+    // public void markSquareAsHitted(int x, int y) {
+    //     for () {
+    //         for () {
+    //             Square square;
 
-                square.setSymbol("X");
-            }
-        }
-    }
+    //             square.setSymbol("X");
+    //         }
+    //     }
+    // }
 
 
 }

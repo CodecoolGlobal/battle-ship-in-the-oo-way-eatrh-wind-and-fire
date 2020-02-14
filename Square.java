@@ -1,3 +1,5 @@
+
+
 class Square {
 
     private String symbol;
@@ -20,6 +22,8 @@ class Square {
         return this.isHit;
     }
 
-
+    public void setSymbol(String newSymbol){
+        this.symbol = newSymbol;
+    }
 
 }

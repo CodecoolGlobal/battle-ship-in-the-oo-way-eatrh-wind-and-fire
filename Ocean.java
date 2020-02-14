@@ -45,7 +45,15 @@ class Ocean {
         ships.add(ship);
     }
 
-    // public boolean hit(int x, int y) {
+    public void hit(Ship newShip, int x, int y) {
+        // Ship newShip = new Ship();
+        if (newShip.hit(x, y)){
+            markSquareAsHitted(x, y, "X");
+        }else{
+            markSquareAsHitted(x, y, "O");
+        }
+
+        
     //     // Iterate over ships and find if ship hitted
     //     for (Ship ship : ships){
     //         boolean hit = ships.contains(x);
@@ -58,17 +66,13 @@ class Ocean {
 
 
     //     return false;
-    // }
+    }
 
-    // public void markSquareAsHitted(int x, int y) {
-    //     for () {
-    //         for () {
-    //             Square square;
-
-    //             square.setSymbol("X");
-    //         }
-    //     }
-    // }
+    public void markSquareAsHitted(int x, int y, String newSymbol) {
+        Square symbol = new Square();
+        symbol.setSymbol(newSymbol);
+        ocean.get(y).set(x, symbol);
+    }
 
 
 }

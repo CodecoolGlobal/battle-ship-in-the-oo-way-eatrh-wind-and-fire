@@ -45,13 +45,15 @@ class Ship {
             System.out.println(points);
         }
     }
-    public void hit(int x, int y) {
+    public boolean hit(int x, int y) {
         // Iterate over ships and find if ship hitted
         for(ArrayList<Integer> hits : ship){
-            if (hits.contains(x) && hits.contains(y)){
+            if (hits.get(0).equals(x) && hits.get(1).equals(y)){
                 System.out.println("Im hit mutherfucker");
+                return true;
             }
-        }
+        }System.out.println("you missed mutherfucker");
+        return false;
         
     }
 }

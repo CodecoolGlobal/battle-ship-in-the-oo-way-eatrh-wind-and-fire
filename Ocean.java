@@ -1,17 +1,21 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 class Ocean {
     private int width;
     private int height;
     public List<ArrayList<Square>> ocean;
-
+    
     private List<Ship> ships;
 
+    
     public Ocean() {
         this.width = 10;
         this.height = 10;
         this.ocean = new ArrayList<>();
+    
 
         for (int i = height; i > 0; i--) {
             ArrayList<Square> nestedList = new ArrayList<>();
@@ -45,13 +49,37 @@ class Ocean {
         ships.add(ship);
     }
 
-    public void hit(Ship newShip, int x, int y) {
-        // Ship newShip = new Ship();
-        if (newShip.hit(x, y)){
-            markSquareAsHitted(x, y, "X");
-        }else{
-            markSquareAsHitted(x, y, "O");
+    public boolean isHit(int x, int y,Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip) {
+        // Iterate over ships and find if ship hitted
+        int i = 0;
+        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
+            for(ArrayList<Integer> coordinates : ship.getValue()){
+                if(coordinates.get(0).equals(x) && coordinates.get(1).equals(y)){
+                    System.out.println(coordinates);
+                    System.out.println("Im hit mutherfucker");
+                    markSquareAsHitted(x, y, "X");
+                    return true;
+                }
+            }
         }
+        System.out.println("you missed mutherfucker");
+        markSquareAsHitted(x, y, "0");
+        return false;
+    }
+
+    public void markSquareAsHitted(int x, int y, String newSymbol) {
+        Square symbol = new Square();
+        symbol.setSymbol(newSymbol);
+        ocean.get(y).set(x, symbol);
+    }
+
+    // public void hit(int x, int y, ista stakow izu) {
+    //     // Ship newShip = new Ship();
+    //     if (newShip.isHit(x, y, lsta )){
+    //         markSquareAsHitted(x, y, "X");
+    //     }else{
+    //         markSquareAsHitted(x, y, "O");
+    //     }
 
         
     //     // Iterate over ships and find if ship hitted
@@ -68,11 +96,6 @@ class Ocean {
     //     return false;
     }
 
-    public void markSquareAsHitted(int x, int y, String newSymbol) {
-        Square symbol = new Square();
-        symbol.setSymbol(newSymbol);
-        ocean.get(y).set(x, symbol);
-    }
+    
 
 
-}

@@ -5,18 +5,25 @@ class Main {
     public static void main(String[] args) {
         boolean q = true;
         Ocean user1Ocean = new Ocean();
-        user1Ocean.display();
-        while(q = true){
-        Ship ship = new Ship("Maniek", false, 5, 2, 2);
-        Scanner scX = new Scanner(System.in);
-        Scanner scY = new Scanner(System.in);
-
+        User user1 = new User();
+        user1.createAndaddShipToList();
+        
+        Scanner scan = new Scanner(System.in);
         System.out.println("X: ");
-        Integer x = scX.nextInt();
+        Integer x = scan.nextInt();
         System.out.println("Y: ");
-        Integer y = scY.nextInt();
-        user1Ocean.hit(ship, x, y);
+        Integer y = scan.nextInt();
+        user1Ocean.isHit(x, y, user1.getListOfUsersShip());
         user1Ocean.display();
+        
+
+
+        
+        // while(q = true){
+        // Ship ship = new Ship("Maniek", false, 5, 2, 2);
+        
+        // user1Ocean.hit(ship, x, y);
+        // user1Ocean.display();
 
         }
                 // Ocean user1Ocean = new Ocean();
@@ -61,4 +68,3 @@ class Main {
 
 
     }
-}

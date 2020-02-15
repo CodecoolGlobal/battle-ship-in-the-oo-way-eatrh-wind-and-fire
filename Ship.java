@@ -1,25 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 class Ship {
     private List<Coordinates> coordinates;
     private String shipName;
-    private Boolean direction = true;       // true for horizontal
+    private Boolean horizontal = true;       // true for horizontal
     private Integer lenght;
     private Integer startingX;
     private Integer startingY;
     private ArrayList<Integer> pointList;
     private ArrayList<ArrayList<Integer>> ship;
 
-    public Ship(String shipName, Boolean direction, Integer lenght, Integer startingX, Integer startingY) {
-        this.ship = calculateCoordinates(shipName, direction, lenght, startingX, startingY);
+    public Ship(String shipName, Boolean horizontal, Integer lenght, Integer startingX, Integer startingY) {
+        this.ship = createShip(shipName, horizontal, lenght, startingX, startingY);
     }
 
-    private ArrayList<ArrayList<Integer>> calculateCoordinates(String shipName, Boolean direction, Integer lenght,
+    private ArrayList<ArrayList<Integer>> createShip(String shipName, Boolean horizontal, Integer lenght,
             Integer startingX, Integer startingY) {
                 ArrayList<ArrayList<Integer>> ship = new ArrayList<>();
 
-        if (direction == true) {
+        if (horizontal == true) {
             for (int i = 0; i < lenght; i++) {
                 ArrayList<Integer> pointList = new ArrayList<>();
                 pointList.add(startingX);
@@ -39,21 +40,13 @@ class Ship {
         return ship;
 
     }
-
+    public ArrayList<ArrayList<Integer>> getShip(){
+        return ship;
+    }
     public void display() {
         for (ArrayList<Integer> points : ship) {
             System.out.println(points);
         }
     }
-    public boolean hit(int x, int y) {
-        // Iterate over ships and find if ship hitted
-        for(ArrayList<Integer> hits : ship){
-            if (hits.get(0).equals(x) && hits.get(1).equals(y)){
-                System.out.println("Im hit mutherfucker");
-                return true;
-            }
-        }System.out.println("you missed mutherfucker");
-        return false;
-        
-    }
+    
 }

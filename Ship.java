@@ -43,10 +43,10 @@ class Ship {
     public ArrayList<ArrayList<Integer>> getShip(){
         return ship;
     }
-    public void display() {
-        for (ArrayList<Integer> points : ship) {
-            System.out.println(points);
-        }
-    }
+    // public void display() {
+    //     for (ArrayList<Integer> points : ship) {
+    //         System.out.println(points);
+    //     }
+    // }
     
 }

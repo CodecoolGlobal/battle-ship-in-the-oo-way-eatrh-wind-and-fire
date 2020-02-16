@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -50,14 +49,15 @@ class Ocean {
     }
 
     public boolean isHit(int x, int y,Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip) {
-        // Iterate over ships and find if ship hitted
-        int i = 0;
         for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
             for(ArrayList<Integer> coordinates : ship.getValue()){
                 if(coordinates.get(0).equals(x) && coordinates.get(1).equals(y)){
-                    System.out.println(coordinates);
+                    // System.out.println(coordinates);
+                    coordinates.set(0,0); 
+                    coordinates.set(1,0);
                     System.out.println("Im hit mutherfucker");
                     markSquareAsHitted(x, y, "X");
+                    isSunk(listOfUsersShip);
                     return true;
                 }
             }
@@ -66,6 +66,18 @@ class Ocean {
         markSquareAsHitted(x, y, "0");
         return false;
     }
+    public void isSunk(Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip){
+        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
+            int sumOfCordinates = 0;
+            for(ArrayList<Integer> cordinates : ship.getValue()){
+               sumOfCordinates = sumOfCordinates + cordinates.get(0) + cordinates.get(1); 
+            //    System.out.println(sumOfCordinates + "sadasdasdsa");
+            }if (sumOfCordinates == 0){ 
+                System.out.println("sunk mutherfucker");
+                break;
+            }
+        }
+    }
 
     public void markSquareAsHitted(int x, int y, String newSymbol) {
         Square symbol = new Square();
@@ -73,27 +85,6 @@ class Ocean {
         ocean.get(y).set(x, symbol);
     }
 
-    // public void hit(int x, int y, ista stakow izu) {
-    //     // Ship newShip = new Ship();
-    //     if (newShip.isHit(x, y, lsta )){
-    //         markSquareAsHitted(x, y, "X");
-    //     }else{
-    //         markSquareAsHitted(x, y, "O");
-    //     }
-
-        
-    //     // Iterate over ships and find if ship hitted
-    //     for (Ship ship : ships){
-    //         boolean hit = ships.contains(x);
-    //     }
-    //     boolean hit = true;
-
-    //     if (hit) {
-    //         markSquareAsHitted();
-    //     }
-
-
-    //     return false;
     }
 
     

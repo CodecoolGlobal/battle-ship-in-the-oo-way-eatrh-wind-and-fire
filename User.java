@@ -5,14 +5,7 @@ import java.util.Scanner;
 
 public class User {
 
-    // private Ocean board;
-    // public User(Ocean board) {
-    //     this.board = board;
-    // }
 
-    // public void markBoard() {
-
-    // }
     private Map<String, Integer> listOfShips;
     private Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip;
     public User(){
@@ -29,8 +22,11 @@ public class User {
         
         for(Map.Entry<String, Integer> row : listOfShips.entrySet()){
             Scanner scan = new Scanner(System.in);
+            System.out.println("Please provide startingX: ");
             int startingX = scan.nextInt();
+            System.out.println("Please provide startingY: ");
             int startingY = scan.nextInt();
+            System.out.println("if ship siuld be horizontal please provide with 'true'");
             Boolean horizontal = scan.nextBoolean();
             Ship statek = new Ship(row.getKey(),horizontal, row.getValue(), startingX, startingY);
             listOfUsersShip.put(row.getKey(),statek.getShip());
@@ -45,7 +41,7 @@ public class User {
     public void displayShips(){
         for(Map.Entry<String, ArrayList<ArrayList<Integer>>> row : listOfUsersShip.entrySet()){
             System.out.println(row.getKey() + row.getValue());
-            System.out.println(row.getValue().isEmpty());
+            System.out.println(row.getValue().isEmpty());      //returns true when arraylist is empty
         }
     }
 

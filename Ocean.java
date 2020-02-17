@@ -52,8 +52,7 @@ class Ocean {
         for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
             for(ArrayList<Integer> coordinates : ship.getValue()){
                 if(coordinates.get(0).equals(x) && coordinates.get(1).equals(y)){
-                    // System.out.println(coordinates);
-                    coordinates.set(0,0); 
+                    coordinates.set(0,-1); 
                     coordinates.set(1,0);
                     System.out.println("Im hit mutherfucker");
                     markSquareAsHitted(x, y, "X");
@@ -66,17 +65,17 @@ class Ocean {
         markSquareAsHitted(x, y, "0");
         return false;
     }
-    public void isSunk(Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip){
+    public Map<String,ArrayList<ArrayList<Integer>>> isSunk(Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip){
         for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
             int sumOfCordinates = 0;
             for(ArrayList<Integer> cordinates : ship.getValue()){
                sumOfCordinates = sumOfCordinates + cordinates.get(0) + cordinates.get(1); 
-            //    System.out.println(sumOfCordinates + "sadasdasdsa");
-            }if (sumOfCordinates == 0){ 
+            }if (sumOfCordinates == (-1 * ship.getValue().size())){ 
                 System.out.println("sunk mutherfucker");
-                break;
+                listOfUsersShip.remove(ship.getKey(), ship.getValue()); 
+                return listOfUsersShip;
             }
-        }
+        } return listOfUsersShip;
     }
 
     public void markSquareAsHitted(int x, int y, String newSymbol) {

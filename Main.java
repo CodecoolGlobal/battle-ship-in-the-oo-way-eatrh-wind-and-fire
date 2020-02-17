@@ -7,6 +7,11 @@ class Main {
         Ocean user1Ocean = new Ocean();
         User user1 = new User();
         user1.createAndaddShipToList();
+        System.out.println("-------------------------------");
+        Ocean user2Ocean = new Ocean();
+        User user2 = new User();
+        user2.createAndaddShipToList();
+
         while(q = true){
         
         Scanner scan = new Scanner(System.in);
@@ -14,9 +19,21 @@ class Main {
         Integer x = scan.nextInt();
         System.out.println("Y: ");
         Integer y = scan.nextInt();
+        
         user1Ocean.isHit(x, y, user1.getListOfUsersShip());
         user1Ocean.display();
         user1.displayShips();
+            System.out.println("-------------------------------");
+
+
+        System.out.println("X: ");
+        Integer x2 = scan.nextInt();
+        System.out.println("Y: ");
+        Integer y2 = scan.nextInt();    
+        
+        user2Ocean.isHit(x2, y2, user2.getListOfUsersShip());
+        user2Ocean.display();
+        user2.displayShips();
         }
 
         

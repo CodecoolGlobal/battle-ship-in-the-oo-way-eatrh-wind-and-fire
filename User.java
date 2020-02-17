@@ -26,7 +26,7 @@ public class User {
             int startingX = scan.nextInt();
             System.out.println("Please provide startingY: ");
             int startingY = scan.nextInt();
-            System.out.println("if ship siuld be horizontal please provide with 'true'");
+            System.out.println("if ship should be horizontal please provide with 'true'");
             Boolean horizontal = scan.nextBoolean();
             Ship statek = new Ship(row.getKey(),horizontal, row.getValue(), startingX, startingY);
             listOfUsersShip.put(row.getKey(),statek.getShip());
@@ -41,7 +41,7 @@ public class User {
     public void displayShips(){
         for(Map.Entry<String, ArrayList<ArrayList<Integer>>> row : listOfUsersShip.entrySet()){
             System.out.println(row.getKey() + row.getValue());
-            System.out.println(row.getValue().isEmpty());      //returns true when arraylist is empty
+            // System.out.println(row.getValue().isEmpty());      //returns true when arraylist is empty
         }
     }
 

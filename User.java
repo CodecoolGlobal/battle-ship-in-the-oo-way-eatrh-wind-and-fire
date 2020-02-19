@@ -8,7 +8,9 @@ public class User {
 
     private Map<String, Integer> listOfShips;
     private Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip;
+    public ArrayList<ArrayList<Integer>> allUsersInputs;
     public User(){
+        this.allUsersInputs = new ArrayList<>();
         this.listOfShips = new HashMap<>();
         this.listOfUsersShip = new HashMap<>();
 
@@ -41,9 +43,31 @@ public class User {
     public void displayShips(){
         for(Map.Entry<String, ArrayList<ArrayList<Integer>>> row : listOfUsersShip.entrySet()){
             System.out.println(row.getKey() + row.getValue());
-            // System.out.println(row.getValue().isEmpty());      //returns true when arraylist is empty
         }
     }
 
+    public ArrayList<ArrayList<Integer>> userInput(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("X: ");
+        Integer x = scan.nextInt();
+        System.out.println("Y: ");
+        Integer y = scan.nextInt();
 
+        ArrayList<Integer> inputs = new ArrayList<>();
+        inputs.add(x);
+        inputs.add(y);
+        if(allUsersInputs.contains(inputs)){
+            userInput();
+        }
+        // ArrayList<ArrayList<Integer>> allUsersInputs = new ArrayList<>();
+        // allUsersInputs(inputs);
+        allUsersInputs.add(inputs);
+        System.out.println(allUsersInputs);
+        return allUsersInputs;
+    }
+    // public ArrayList<ArrayList<Integer>> allUsersInputs(ArrayList<Integer> userInput){
+    //     ArrayList<ArrayList<Integer>> allUsersInputs = new ArrayList<>();
+    //     System.out.println( allUsersInputs.add(userInput));
+    //     return allUsersInputs;
+    // }
 }

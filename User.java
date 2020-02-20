@@ -3,7 +3,7 @@ import java.util.*;
 public class User {
     private Map<String, Integer> listOfShips;
     private Map<String, Ship> listOfUsersShip;
-    public List<Coordinates> hits;
+    private List<Coordinates> hits;
 
     public User() {
         this.hits = new ArrayList<>();
@@ -17,60 +17,73 @@ public class User {
         listOfShips.put("Destroyer", 2);
     }
 
-    public Map<String, Ship> createAndAddShipToList() {
+    public void createAndAddShipToList() {
         for (Map.Entry<String, Integer> row : listOfShips.entrySet()) {
             Scanner scan = new Scanner(System.in);
 
-            System.out.println("Please provide startingX: ");
-            int startingX = scan.nextInt();
-
-            System.out.println("Please provide startingY: ");
-            int startingY = scan.nextInt();
-
+            List<Integer> shipCoordinatesFromUser = getShipCoordinatesFromUser();
             System.out.println("if ship should be horizontal please provide with 'true'");
             Boolean horizontal = scan.nextBoolean();
 
-            Ship ship = new Ship(row.getKey(), horizontal, row.getValue(), startingX, startingY);
+            Ship ship = new Ship(
+                    row.getKey(),
+                    horizontal,
+                    row.getValue(),
+                    shipCoordinatesFromUser.get(0),
+                    shipCoordinatesFromUser.get(1));
+
             listOfUsersShip.put(row.getKey(), ship);
         }
-        return listOfUsersShip;
     }
 
-    public Map<String, Ship> getListOfUsersShip() {
-        return listOfUsersShip;
-    }
-
-    public void displayShips() {
-        for (Map.Entry<String, Ship> entry : listOfUsersShip.entrySet()) {
-            System.out.println(entry.getValue());
-        }
-    }
-
-    public List<Coordinates> userInput() {
+    private List<Integer> getShipCoordinatesFromUser() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("X: ");
-        int x = scan.nextInt();
-        System.out.println("Y: ");
-        int y = scan.nextInt();
+        List<Integer> coordinates = new ArrayList<>();
 
-        Coordinates coordinates = new Coordinates(x, y);
+        int startingX = 0;
+        int startingY = 0;
 
-        if (hits.isEmpty()) {
+        boolean continueAsk = true;
+        while (continueAsk) {
+            System.out.println("Please provide startingX: ");
+            startingX = scan.nextInt();
 
+            System.out.println("Please provide startingY: ");
+            startingY = scan.nextInt();
+
+            boolean existingCoordinates = areCoordinatesAlreadyChosen(startingX, startingY);
+            if (!existingCoordinates) {
+                continueAsk = false;
+            } else {
+                System.out.println("You have already provided given coordinates! Please Try again!");
+            }
         }
 
+        coordinates.add(startingX);
+        coordinates.add(startingY);
 
-        // ArrayList<ArrayList<Integer>> allUsersInputs = new ArrayList<>();
-        // allUsersInputs(inputs);
-        hits.add(coordinates);
-        System.out.println(hits);
-        return hits;
+        return coordinates;
     }
 
+    private boolean areCoordinatesAlreadyChosen(int x, int y) {
+        boolean exists = false;
+        for (Map.Entry<String, Ship> entry : listOfUsersShip.entrySet()) {
+            Ship existingShip = entry.getValue();
+            if (existingShip.containsCoordinate(x, y)) {
+                exists = true;
+            }
+        }
 
-    // public ArrayList<ArrayList<Integer>> allUsersInputs(ArrayList<Integer> userInput){
-    //     ArrayList<ArrayList<Integer>> allUsersInputs = new ArrayList<>();
-    //     System.out.println( allUsersInputs.add(userInput));
-    //     return allUsersInputs;
-    // }
+        return exists;
+    }
+
+    public void printUserShips() {
+        for (Map.Entry<String, Ship> entry : listOfUsersShip.entrySet()) {
+            Ship ship = entry.getValue();
+            System.out.println(
+                    entry.getKey() + ": " + ship.getCoordinates()
+            );
+        }
+    }
+
 }

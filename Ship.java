@@ -3,7 +3,7 @@ import java.util.List;
 
 class Ship {
     private String shipName;
-    private Boolean horizontal;       // true for horizontal
+    private Boolean horizontal;
     private Integer lenght;
     private Integer startingX;
     private Integer startingY;
@@ -36,12 +36,19 @@ class Ship {
         }
     }
 
-    // public void display() {
-    //     for (ArrayList<Integer> points : ship) {
-    //         System.out.println(points);
-    //     }
-    // }
+    public boolean containsCoordinate(int x, int y) {
+        for (Coordinates coordinates : coordinates) {
+            if (coordinates.getX() == x && coordinates.getY() == y) {
+                return true;
+            }
+        }
 
+        return false;
+    }
+
+    public List<Coordinates> getCoordinates() {
+        return coordinates;
+    }
 
     @Override
     public String toString() {

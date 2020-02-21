@@ -20,7 +20,7 @@ class Ship {
             Integer startingX, Integer startingY) {
                 ArrayList<ArrayList<Integer>> ship = new ArrayList<>();
 
-        if (horizontal == true) {
+        if (horizontal) {
             for (int i = 0; i < lenght; i++) {
                 ArrayList<Integer> pointList = new ArrayList<>();
                 pointList.add(startingX);

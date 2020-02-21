@@ -3,6 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
 public class User {
 
 
@@ -24,17 +25,55 @@ public class User {
         
         for(Map.Entry<String, Integer> row : listOfShips.entrySet()){
             Scanner scan = new Scanner(System.in);
-            System.out.println("Please provide startingX: ");
-            int startingX = scan.nextInt();
-            System.out.println("Please provide startingY: ");
-            int startingY = scan.nextInt();
+            int startingX = 0;
+            int startingY = 0;
+            boolean continueAsk = true;
+            while(continueAsk){
+                System.out.println("Please provide startingX: ");
+                startingX = scan.nextInt();
+                
+                System.out.println("Please provide startingY: ");
+                startingY = scan.nextInt();
+            
+                Boolean existingCordinates =  checkForDublleCordinates(listOfUsersShip, startingX, startingY);
+                if(!existingCordinates){
+                    continueAsk = false;
+                }else{
+                    System.out.println("wrong coordinates! Please Try again!");
+                   
+                }
+        }
             System.out.println("if ship should be horizontal please provide with 'true'");
             Boolean horizontal = scan.nextBoolean();
+            
+          
+            
             Ship statek = new Ship(row.getKey(),horizontal, row.getValue(), startingX, startingY);
             listOfUsersShip.put(row.getKey(),statek.getShip());
         }
+    
         return listOfUsersShip;
     }
+
+    public boolean checkForDublleCordinates(Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip, int startingX, int startingY){
+        if(startingX > 10 || startingX < 0 || startingY > 10 || startingY < 0){
+            System.out.println("coordinates out of range");
+            return true;
+        }else{
+        ArrayList<Integer> cordinatesToCheck = new ArrayList<>();
+        cordinatesToCheck.add(startingX);
+        cordinatesToCheck.add(startingY);
+        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> entry : listOfUsersShip.entrySet() ){
+            ArrayList<ArrayList<Integer>> existingShip = entry.getValue();
+            if (existingShip.contains(cordinatesToCheck)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+      
 
     public Map<String, ArrayList<ArrayList<Integer>>> getListOfUsersShip(){
         return listOfUsersShip;
@@ -48,26 +87,28 @@ public class User {
 
     public ArrayList<ArrayList<Integer>> userInput(){
         Scanner scan = new Scanner(System.in);
-        System.out.println("X: ");
-        Integer x = scan.nextInt();
-        System.out.println("Y: ");
-        Integer y = scan.nextInt();
-
+        Boolean continueAsk = true;
         ArrayList<Integer> inputs = new ArrayList<>();
-        inputs.add(x);
-        inputs.add(y);
-        if(allUsersInputs.contains(inputs)){
-            userInput();
-        }
-        // ArrayList<ArrayList<Integer>> allUsersInputs = new ArrayList<>();
-        // allUsersInputs(inputs);
+        while(continueAsk){
+            System.out.println("X: ");
+            Integer x = scan.nextInt();
+        
+            System.out.println("Y: ");
+            Integer y = scan.nextInt();
+
+            
+            inputs.add(x);
+            inputs.add(y);
+            if(allUsersInputs.contains(inputs) || x > 10 || x < 0 || y > 10 || y < 0){
+                System.out.println("Wrong coordinates! Please Try again!");
+                inputs.clear();
+            }else{
+                continueAsk = false;
+            }
+    }
         allUsersInputs.add(inputs);
         System.out.println(allUsersInputs);
         return allUsersInputs;
     }
-    // public ArrayList<ArrayList<Integer>> allUsersInputs(ArrayList<Integer> userInput){
-    //     ArrayList<ArrayList<Integer>> allUsersInputs = new ArrayList<>();
-    //     System.out.println( allUsersInputs.add(userInput));
-    //     return allUsersInputs;
-    // }
+
 }

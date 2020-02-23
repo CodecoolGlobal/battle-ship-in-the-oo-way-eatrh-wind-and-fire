@@ -1,15 +1,8 @@
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+
 
 class Ship {
-    private List<Coordinates> coordinates;
-    private String shipName;
-    private Boolean horizontal = true;       // true for horizontal
-    private Integer lenght;
-    private Integer startingX;
-    private Integer startingY;
-    private ArrayList<Integer> pointList;
+
     private ArrayList<ArrayList<Integer>> ship;
 
     public Ship(String shipName, Boolean horizontal, Integer lenght, Integer startingX, Integer startingY) {
@@ -43,10 +36,5 @@ class Ship {
     public ArrayList<ArrayList<Integer>> getShip(){
         return ship;
     }
-    // public void display() {
-    //     for (ArrayList<Integer> points : ship) {
-    //         System.out.println(points);
-    //     }
-    // }
     
 }

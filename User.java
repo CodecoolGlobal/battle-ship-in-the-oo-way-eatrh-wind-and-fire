@@ -10,6 +10,7 @@ public class User {
     private Map<String, Integer> listOfShips;
     private Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip;
     public ArrayList<ArrayList<Integer>> allUsersInputs;
+   
     public User(){
         this.allUsersInputs = new ArrayList<>();
         this.listOfShips = new HashMap<>();
@@ -21,6 +22,7 @@ public class User {
         listOfShips.put("Submarine", 3);
         listOfShips.put("Destroyer", 2);
     }
+    
     public Map<String, ArrayList<ArrayList<Integer>>> createAndaddShipToList(){
         
         for(Map.Entry<String, Integer> row : listOfShips.entrySet()){
@@ -46,10 +48,9 @@ public class User {
             System.out.println("if ship should be horizontal please provide with 'true'");
             Boolean horizontal = scan.nextBoolean();
             
-          
             
-            Ship statek = new Ship(row.getKey(),horizontal, row.getValue(), startingX, startingY);
-            listOfUsersShip.put(row.getKey(),statek.getShip());
+            Ship ship = new Ship(row.getKey(),horizontal, row.getValue(), startingX, startingY);
+            listOfUsersShip.put(row.getKey(),ship.getShip());
         }
     
         return listOfUsersShip;

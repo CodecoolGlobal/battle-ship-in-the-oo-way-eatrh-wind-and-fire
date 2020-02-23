@@ -61,9 +61,8 @@ public class User {
             System.out.println("coordinates out of range");
             return true;
         }else{
-        ArrayList<Coordinates> cordinatesToCheck = new ArrayList<>();
-        cordinatesToCheck.add(startingX);
-        cordinatesToCheck.add(startingY);
+        Coordinates cordinatesToCheck = new Coordinates(startingX, startingY);
+          
         for(Map.Entry<String, ArrayList<Coordinates>> entry : listOfUsersShip.entrySet() ){
             ArrayList<Coordinates> existingShip = entry.getValue();
             if (existingShip.contains(cordinatesToCheck)) {
@@ -76,33 +75,33 @@ public class User {
 }
       
 
-    public Map<String, ArrayList<ArrayList<Integer>>> getListOfUsersShip(){
+    public Map<String, ArrayList<Coordinates>> getListOfUsersShip(){
         return listOfUsersShip;
     }
 
     public void displayShips(){
-        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> row : listOfUsersShip.entrySet()){
+        for(Map.Entry<String, ArrayList<Coordinates>> row : listOfUsersShip.entrySet()){
             System.out.println(row.getKey() + row.getValue());
         }
     }
 
-    public ArrayList<ArrayList<Integer>> userInput(){
+    public ArrayList<Coordinates> userInput(){
         Scanner scan = new Scanner(System.in);
         Boolean continueAsk = true;
-        ArrayList<Integer> inputs = new ArrayList<>();
+        Coordinates inputs = new Coordinates(0,0);
         while(continueAsk){
             System.out.println("X: ");
             Integer x = scan.nextInt();
         
             System.out.println("Y: ");
             Integer y = scan.nextInt();
-
             
-            inputs.add(x);
-            inputs.add(y);
+            inputs = new Coordinates(x, y);
+            
+          
             if(allUsersInputs.contains(inputs) || x > 10 || x < 0 || y > 10 || y < 0){
                 System.out.println("Wrong coordinates! Please Try again!");
-                inputs.clear();
+            
             }else{
                 continueAsk = false;
             }

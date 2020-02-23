@@ -8,7 +8,7 @@ class Ship {
     private Integer startingY;
     private boolean horizontal;
     private Integer lenght;
-    private List<Coordinates> coordinates;
+    private ArrayList<Coordinates> coordinates;
 
 
     // private ArrayList<ArrayList<Integer>> ship;
@@ -43,7 +43,7 @@ class Ship {
             startingY++;
         }
     }
-    public List<Coordinates> getShip(){
+    public ArrayList<Coordinates> getShip(){
         return coordinates;
     }
     

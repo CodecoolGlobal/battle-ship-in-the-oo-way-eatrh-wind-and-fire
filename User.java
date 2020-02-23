@@ -8,8 +8,8 @@ public class User {
 
 
     private Map<String, Integer> listOfShips;
-    private Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip;
-    public ArrayList<ArrayList<Integer>> allUsersInputs;
+    private Map<String, ArrayList<Coordinates>> listOfUsersShip;
+    public ArrayList<Coordinates> allUsersInputs;
    
     public User(){
         this.allUsersInputs = new ArrayList<>();
@@ -23,7 +23,7 @@ public class User {
         listOfShips.put("Destroyer", 2);
     }
     
-    public Map<String, ArrayList<ArrayList<Integer>>> createAndaddShipToList(){
+    public Map<String, ArrayList<Coordinates>> createAndaddShipToList(){
         
         for(Map.Entry<String, Integer> row : listOfShips.entrySet()){
             Scanner scan = new Scanner(System.in);
@@ -56,16 +56,16 @@ public class User {
         return listOfUsersShip;
     }
 
-    public boolean checkForDublleCordinates(Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip, int startingX, int startingY){
+    public boolean checkForDublleCordinates(Map<String, ArrayList<Coordinates>> listOfUsersShip, int startingX, int startingY){
         if(startingX > 10 || startingX < 0 || startingY > 10 || startingY < 0){
             System.out.println("coordinates out of range");
             return true;
         }else{
-        ArrayList<Integer> cordinatesToCheck = new ArrayList<>();
+        ArrayList<Coordinates> cordinatesToCheck = new ArrayList<>();
         cordinatesToCheck.add(startingX);
         cordinatesToCheck.add(startingY);
-        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> entry : listOfUsersShip.entrySet() ){
-            ArrayList<ArrayList<Integer>> existingShip = entry.getValue();
+        for(Map.Entry<String, ArrayList<Coordinates>> entry : listOfUsersShip.entrySet() ){
+            ArrayList<Coordinates> existingShip = entry.getValue();
             if (existingShip.contains(cordinatesToCheck)) {
                 return true;
             }

@@ -3,6 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 
 public class User {
 
@@ -24,6 +26,8 @@ public class User {
     }
     
     public Map<String, ArrayList<Coordinates>> createAndaddShipToList(){
+        // int startingX = 1;
+        // int startingY = 1;
         
         for(Map.Entry<String, Integer> row : listOfShips.entrySet()){
             Scanner scan = new Scanner(System.in);
@@ -50,7 +54,10 @@ public class User {
             
             
             Ship ship = new Ship(row.getKey(),horizontal, row.getValue(), startingX, startingY);
+         
             listOfUsersShip.put(row.getKey(),ship.getShip());
+            // startingX++;
+            // startingY++;
         }
     
         return listOfUsersShip;
@@ -98,17 +105,30 @@ public class User {
             
             inputs = new Coordinates(x, y);
             
-          
-            if(allUsersInputs.contains(inputs) || x > 10 || x < 0 || y > 10 || y < 0){
+            Boolean CheckInputs = checkInputs(x, y, allUsersInputs);
+            if(CheckInputs || x > 10 || x < 0 || y > 10 || y < 0){
                 System.out.println("Wrong coordinates! Please Try again!");
             
             }else{
+
                 continueAsk = false;
             }
     }
         allUsersInputs.add(inputs);
-        System.out.println(allUsersInputs);
+        for(Coordinates cordinate : allUsersInputs ){
+            System.out.println(cordinate.toString());
+        }
+        // System.out.println(allUsersInputs + "sdadasda");
         return allUsersInputs;
+    }
+    public Boolean checkInputs(int x, int y, ArrayList<Coordinates> allUsersInputs){
+        for (Coordinates cordinate : allUsersInputs){
+            if(cordinate.getX() == x && cordinate.getY() == y){
+                return true;
+            
+                
+            }
+        }return false;
     }
 
 }

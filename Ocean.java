@@ -45,12 +45,12 @@ class Ocean {
     }
 
 
-    public boolean isHit(int x, int y,Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip) {
-        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
-            for(ArrayList<Integer> coordinates : ship.getValue()){
-                if(coordinates.get(0).equals(x) && coordinates.get(1).equals(y)){
-                    coordinates.set(0,-1); 
-                    coordinates.set(1,0);
+    public boolean isHit(int x, int y,Map<String, ArrayList<Coordinates>> listOfUsersShip) {
+        for(Map.Entry<String, ArrayList<Coordinates>> ship : listOfUsersShip.entrySet()){
+            for(Coordinates coordinates : ship.getValue()){
+                if(coordinates.getX() == x && coordinates.getY() == y){
+                    coordinates.setX(-1); 
+                    coordinates.setY(0);
                     System.out.println("hit");
                     markSquareAsHitted(x, y, "X");
                     isSunk(listOfUsersShip);
@@ -62,11 +62,11 @@ class Ocean {
         markSquareAsHitted(x, y, "0");
         return false;
     }
-    public Map<String,ArrayList<ArrayList<Integer>>> isSunk(Map<String, ArrayList<ArrayList<Integer>>> listOfUsersShip){
-        for(Map.Entry<String, ArrayList<ArrayList<Integer>>> ship : listOfUsersShip.entrySet()){
+    public Map<String,ArrayList<Coordinates>> isSunk(Map<String, ArrayList<Coordinates>> listOfUsersShip){
+        for(Map.Entry<String, ArrayList<Coordinates>> ship : listOfUsersShip.entrySet()){
             int sumOfCordinates = 0;
-            for(ArrayList<Integer> cordinates : ship.getValue()){
-               sumOfCordinates = sumOfCordinates + cordinates.get(0) + cordinates.get(1); 
+            for(Coordinates cordinates : ship.getValue()) {
+               sumOfCordinates = sumOfCordinates + cordinates.getX() + cordinates.getY(); 
             }if (sumOfCordinates == (-1 * ship.getValue().size())){ 
                 System.out.println(" & sunk");
                 listOfUsersShip.remove(ship.getKey(), ship.getValue()); 

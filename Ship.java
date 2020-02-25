@@ -29,19 +29,20 @@ class Ship {
             Integer startingX, Integer startingY) {
            
 
-        if (horizontal) {
+        if (horizontal == true) {
             for (int i = 0; i < lenght; i++) {
                 Coordinates coordinate = new Coordinates(startingX, startingY);
                 this.coordinates.add(coordinate);
                 startingX++;
             }
            
-        }
+        }else{
         for (int i = 0; i < lenght; i++) {
             Coordinates coordinate = new Coordinates(startingX, startingY);
             this.coordinates.add(coordinate);
             startingY++;
         }
+    }
     }
     public ArrayList<Coordinates> getShip(){
         return coordinates;
